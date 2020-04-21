@@ -5,7 +5,7 @@
         <small class="form-text text-danger" *ngIf="products.get('productQuantity').touched && products.get('productQuantity').hasError('invalidNumber')">Please enter number of quantity</small>
         <div class="text-success" *ngIf="success">Product Updated Successfully</div>
       </div>
-      <form class="form" [formGroup]="products" (ngSubmit)="updateProduct()">
+      <form class="form" [formGroup]="products" (ngSubmit)="updateProduct(products)">
     <div class="form-group">
         <label for="name" class="mb-2 mr-sm-2">Product Name:</label>
         <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter Product Name" required formControlName="productName">

@@ -11,7 +11,7 @@ export class ProductListComponent implements OnInit {
 title="Products Overview";
 
 constructor(
-  private userDat: GlobalService,
+  public userDat: GlobalService,
   private httpClient: HttpClient,
   private router: Router
 ) { }
