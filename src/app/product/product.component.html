@@ -1,0 +1,86 @@
+<h5>{{title}}</h5>
+    <br/>
+    <div class="jumbotron">
+      
+      <form class="form" [formGroup]="products" (ngSubmit)="addProduct($event)">
+          <div class="p-2 text-center">
+              <small class="form-text text-warning" *ngIf="products.get('productQuantity').touched && products.get('productQuantity').hasError('required')">Quantity is required!</small>
+              <small class="form-text text-danger" *ngIf="products.get('productQuantity').touched && products.get('productQuantity').hasError('invalidNumber')">Please enter number of quantity</small>
+              <div class="text-success" *ngIf="success">Product Added Successfully</div>
+            </div>
+        <div class="form-group">
+          <label for="name" class="mb-2 mr-sm-2">Product Name:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter Product Name" required formControlName="productName">
+        </div>
+        <div class="form-group">
+          <label for="qnty" class="mb-2 mr-sm-2">Quantity:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter quantity" id="productQuantity" formControlName="productQuantity"
+            required>
+
+        </div>
+        <div class="form-group">
+          <label for="price" class="mb-2 mr-sm-2">Price:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter price" id="price" formControlName="price" required>
+        </div>
+        <div class="form-group">
+          <label for="brand" class="mb-2 mr-sm-2">Brand Name:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter brand" id="brand" formControlName="brand" required>
+        </div>
+        <div class="form-group">
+          <label for="model" class="mb-2 mr-sm-2">Model Name:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter model" id="model" formControlName="model" required>
+        </div>
+        <div class="form-group">
+          <label for="energy" class="mb-2 mr-sm-2">Energy Efficiency:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter Rating" id="energy" formControlName="energy" required>
+        </div>
+        <div class="form-group">
+          <label for="capacity" class="mb-2 mr-sm-2">Capacity:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter capacity" id="capacity" formControlName="capacity"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="consumption" class="mb-2 mr-sm-2">Annual Energy Consumption:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter annual consumption" id="consumption" formControlName="consumption"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="installationtype" class="mb-2 mr-sm-2">Installation Type:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter installation type" id="installationtype" formControlName="installationtype"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="color" class="mb-2 mr-sm-2">Color:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter color" id="color" formControlName="color" required>
+        </div>
+        <div class="form-group">
+          <label for="material" class="mb-2 mr-sm-2">Material:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter material" id="material" formControlName="material"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="components" class="mb-2 mr-sm-2">Components included:</label>
+          <input type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter components" id="components" formControlName="components"
+            required>
+        </div>
+        <div class="form-group">
+          <label for="dateavailable" class="mb-2 mr-sm-2">Date of first available:</label>
+          <input type="date"   class="form-control mb-2 mr-sm-2" placeholder="Enter date" id="dateavailable" formControlName="dateavailable"
+            required>
+        </div>
+        <div class="form-group">
+            <label for="warranty" class="mb-2 mr-sm-2">Warranty:</label>
+            <input type="text"   class="form-control mb-2 mr-sm-2" placeholder="Enter warranty" id="warranty" formControlName="warranty"
+              required>
+          </div>
+
+        <div class="form-group">
+          <label for="description" class="mb-2 mr-sm-2">Description:</label>
+          <textarea type="input" class="form-control mb-2 mr-sm-2" placeholder="Enter description" id="description" formControlName="description"
+            required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary mb-2 mr-sm-2" [disabled]="!products.valid">Add Product</button>
+        <button type="button" class="btn btn-secondary mb-2 mr-sm-2" (click)="reset()">Cancel</button>
+      </form>
+    </div>

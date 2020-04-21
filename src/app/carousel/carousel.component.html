@@ -1,0 +1,59 @@
+<div class="container bg-carousel text-center">
+    <span class="recent text-white bg-warning p-1" data-toggle="modal" data-target="#myModal">Top viewed</span>
+   <div id="capstonebanner" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#capstonebanner" data-slide-to="0" class="active"></li>
+      <li data-target="#capstonebanner" data-slide-to="1"></li>
+      <li data-target="#capstonebanner" data-slide-to="2"></li>
+    </ul>
+  
+    <!-- The slideshow -->
+    <div class="carousel-inner pt-2">
+      <div class="carousel-item active">
+        <h3 class="text-white">Products on Go!</h3>
+        <p class="text-warning">Trending with new fashion and health appliances...Choose the best</p>
+      </div>
+      <div class="carousel-item" *ngFor="let pr of products">
+        <h3 class="text-white">{{pr.brandName}} {{pr.productName}}</h3>
+        <p class="text-warning description">{{pr.usability}}</p>
+      </div>
+    </div>
+  
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#capstonebanner" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#capstonebanner" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+  </div>
+  </div>
+  
+   <!-- The Modal -->
+   <div class="modal" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Top viewed products</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="align-right"><button (click)="gotoCustomize($event)" data-dismiss="modal">Customize</button></div>
+          <app-chart></app-chart>
+        </div>
+        
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  

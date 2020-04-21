@@ -1,0 +1,26 @@
+.bg-carousel{
+    background-color: #1976d2;
+    height:108px;
+    position:relative;
+  }
+  #capstonebanner .carousel-indicators{
+      top:80px;
+  }
+  .description{
+  white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   text-align:center;
+  }
+  .recent{
+     position:absolute;
+     right:5%;
+     bottom:6%;
+     cursor:pointer;
+     z-index:9;
+     border:1px solid  #1976d2;
+ 
+  }
+  .recent:hover{
+      border:2px silver solid
+  }

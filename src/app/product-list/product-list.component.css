@@ -1,0 +1,37 @@
+.Book-holder{
+    position:relative;
+    margin:0 auto;
+  }
+  .Booktitle{
+    font-weight:bold;
+    color:gold;
+    
+  }
+  .book-placeholder{
+    font-size:8em;
+    color:cornflowerblue;
+  }
+  .sabab{
+    position:relative;
+    max-height:1.8em;
+  }
+  .pin{
+    transform: skewx(23deg);
+    position:absolute;
+    top:-28px;
+    font-size:1.8em;
+  }
+  .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+  }
+  .box{
+   border:1px solid rgb(252, 202, 94);
+   border-radius:10px
+  }

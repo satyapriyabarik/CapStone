@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="jumbotron justify-content-center">
+        <div class="row">
+            <div class="col-md-1">
+                <strong>
+                    <a routerLink="/home" class="btn btn-secondary">
+                        <i class="fas fa-chevron-left"></i> Back
+                    </a>
+                </strong>
+            </div>
+            <div class="col-md-10 text-center">
+                <i class="fas fa-picture-o book-placeholder"></i>
+                <h3>{{productName}}</h3>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Product Information</h4>
+            <h6 class="bg-warning p-2">Technical Details</h6>
+            <table class="table table-bordered">
+                <tr>
+                    <td>Brand</td>
+                    <td>{{brand}}</td>
+                </tr>
+                <tr>
+                    <td>Model</td>
+                    <td>{{model}}</td>
+                </tr>
+                <tr>
+                    <td>Energy Efficiency</td>
+                    <td>{{ratings}}</td>
+                </tr>
+                <tr>
+                    <td>Capacity</td>
+                    <td>{{capacity}}</td>
+                </tr>
+                <tr>
+                    <td>Annual Energy Consumption</td>
+                    <td>{{consumption}}</td>
+                </tr>
+                <tr>
+                    <td>Installation type</td>
+                    <td>{{installationtype}}</td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td>{{color}}</td>
+                </tr>
+                <tr>
+                    <td>Material</td>
+                    <td>{{material}}</td>
+                </tr>
+                <tr>
+                    <td>Included component</td>
+                    <td>{{components}}</td>
+                </tr>
+                <tr>
+                    <td>Date of First Available</td>
+                    <td>{{dateofavailable | date}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h4>Other Information</h4>
+            <h6 class="bg-warning p-2">Warranty Details</h6>
+            <div>{{warranty}}</div>
+            <table class="table table-bordered">
+                <tr>
+                    <td>Quantity available</td>
+                    <td>{{quantity}}</td>
+                </tr>
+                <tr>
+                    <td>Price</td>
+                    <td>${{price}}</td>
+                </tr>
+                <tr>
+                    <td>Total Investment on this Product</td>
+                    <td>${{quantity*price}}</td>
+                </tr>
+                <tr>
+                    <td>Added By</td>
+                    <td>{{addedby}}</td>
+                </tr>
+                <tr>
+                    <td>Added on</td>
+                    <td>{{addedon | date}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="mt-2 p2">
+        <h4 class="bg-warning p-2">Product Description</h4>
+        <div>{{description}}</div>
+    </div>
+</div>

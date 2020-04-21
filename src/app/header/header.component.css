@@ -1,0 +1,15 @@
+.rotator{
+    animation:rotateLogo 5s infinite
+}
+@keyframes rotateLogo{
+    50%  {transform:rotate(45deg)}
+    100% {transform:rotate(360deg)}
+}
+.increaser{
+    animation:incr 5s infinite
+}
+@keyframes incr{
+    from {color: greenyellow;}
+    50%  {color: green !important;}
+    to   {color: gold;}
+}

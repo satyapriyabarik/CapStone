@@ -1,0 +1,78 @@
+<div className="container">
+    <div class="row m-2 bg-light pt-3 pb-2">
+        <div class="text-center text-warning col-md-3 pt-3">
+            <strong>{{title}}</strong>
+        </div>
+        <div class="text-center text-warning  col-md-7">
+            <div class=".search-container">
+            <form class="form-inline m-2">
+                <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search Product..." [(ngModel)]="searchProduct"
+                    autocomplete="off">
+                    <button type="submit" class="searchBtn"><i class="fa fa-search"></i></button>
+            </form>
+            </div>
+        </div>
+        <div class="text-center text-white col-md-2 pt-2 pb-2">
+            <a class="btn btn-primary" (click)='goToAddProducct()'>Add New Product</a>
+        </div>
+    </div>
+    <div class="text-center" *ngIf="allProductDetails==undefined">
+            <div class="lds-hourglass bg-secondary rounded-circle"></div>
+        </div>
+    <div *ngFor="let bk of allProductDetails | filter:searchProduct" class="bg-light box mb-2">
+        <div class="row mt-3 ml-1 mr-1 mb-3  pt-3 pb-3">
+            <div class="col-md-3">
+                <div class="Book-holder card text-center pt-2 pb-4">
+                    <i class="fas fa-picture-o book-placeholder"></i>
+                    <span class="Booktitle">{{bk.productName}}</span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card br p-3">
+                    <div class="text-center sabab">
+                        <i class="fas fa-thumbtack pin"></i>
+                    </div>
+                    <div class="mb-1">
+                        <span>
+                            <strong>Name of the Product: </strong>
+                        </span>
+                        <span> {{bk.productName}}</span>
+                    </div>
+                    <div class="mb-1">
+                        <span>
+                            <strong>Brand Name: </strong>
+                        </span>
+                        <span> {{bk.brandName}}</span>
+                    </div>
+                    <div class="mb-1">
+                        <span>
+                            <strong>Quantity Available in stock: </strong>
+                        </span>
+                        <span>
+                            {{bk.quantity}}</span>
+                    </div>
+                    <div class="mb-1">
+                        <span>
+                            <strong>Price per unit: </strong>
+                        </span>
+                        <span>
+                            ${{bk.price}}</span>
+                    </div>
+                    
+<div style="text-align:right"><a (click)="goToProductDetails(bk)" class="btn btn-light text-warning">View Details</a></div>
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <div class="card pb-5 pt-5 mt-1">
+                    <div class="card-body" style="margin:0 auto">
+                        <button (click)="goToModifyProducct(bk)" class="btn btn-primary text-white mr-2">
+                            <i class="fas fa-pencil-square-o">&nbsp;</i> Edit</button>
+                        <button (click)="deleteUser(bk)" [disabled]="userDat.currentUser==='Guest'" class="btn btn-primary text-white">
+                            <i class="fas fa-trash">&nbsp;</i> Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
