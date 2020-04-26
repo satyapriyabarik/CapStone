@@ -20,7 +20,8 @@ const routes: Routes = [
   {path:'product',component:ProductComponent,canActivate: [AuthGuard]},
   {path:'edit', component:ProductModificationComponent, canActivate: [AuthGuard], canLoad:[ModGuard]},
   {path: 'customChart', component:CustomChartComponent,canActivate: [AuthGuard]},
-  { path: 'productDetails',canActivate: [AuthGuard],canLoad:[ModGuard], loadChildren: () => import('./product-details/product-details.module').then(m => m.ProductDetailsModule) }
+  { path: 'productDetails',canActivate: [AuthGuard],canLoad:[ModGuard], 
+  loadChildren: () => import('./product-details/product-details.module').then(m => m.ProductDetailsModule) }
 
 ];
 
