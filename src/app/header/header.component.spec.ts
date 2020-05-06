@@ -14,7 +14,7 @@ class RouterMock {
      return url;
   } 
 }
-describe('HeaderComponent', () => {
+xdescribe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   

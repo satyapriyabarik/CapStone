@@ -14,7 +14,7 @@ import {LoginComponent } from '../login/login.component';
 import {ProductComponent } from '../product/product.component';
 import { ProductModificationComponent } from '../product-modification/product-modification.component';
 
-describe('HomeComponent', () => {
+xdescribe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
   class RouterMock {

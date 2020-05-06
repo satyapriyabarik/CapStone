@@ -1,23 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { AboutComponent } from './about.component';
 
-describe('AboutComponent', () => {
+fdescribe('AboutComponent', () => {
   let component: AboutComponent;
   let fixture: ComponentFixture<AboutComponent>;
-  class RouterMock {
-    navigateByUrl(url: string) {
-      return url;
-    }
-    serializeUrl(url: string) {
-       return url;
-    } 
-  }
+ 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AboutComponent ],
-      schemas: [NO_ERRORS_SCHEMA],
+      declarations: [ AboutComponent ]
     })
     .compileComponents();
   }));

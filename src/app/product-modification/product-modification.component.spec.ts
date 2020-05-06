@@ -46,7 +46,7 @@ class MockProductService {
     this.products.next(arrayProducts);
   }
 }
-describe('ProductModificationComponent', () => {
+xdescribe('ProductModificationComponent', () => {
   let component: ProductModificationComponent;
   let fixture: ComponentFixture<ProductModificationComponent>;
   
