@@ -1,11 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header.component';
-import { RouterTestingModule } from "@angular/router/testing";
-import { AboutComponent } from '../about/about.component';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http'
 import { GlobalService } from '../service/global.service'
+let userServiceStub: Partial<GlobalService>;
+let httpcl:Partial<HttpClient>;
 class RouterMock {
   navigateByUrl(url: string) {
     return url;
@@ -14,19 +13,19 @@ class RouterMock {
      return url;
   } 
 }
-xdescribe('HeaderComponent', () => {
+fdescribe('HeaderComponent', () => {
   let component: HeaderComponent;
   let fixture: ComponentFixture<HeaderComponent>;
   
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule.withRoutes([])
         
       ],
-      schemas: [NO_ERRORS_SCHEMA],
-      declarations: [ HeaderComponent ,AboutComponent],
-      providers:[{provide:GlobalService}]
+      schemas: [],
+      declarations: [ HeaderComponent ],
+      providers: [ { provide: GlobalService, useValue: userServiceStub },
+        {provide:Router, useValue:RouterMock}, {provide:HttpClient,useValue:httpcl}],
     })
     .compileComponents();
   }));

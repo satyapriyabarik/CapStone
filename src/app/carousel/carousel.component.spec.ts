@@ -1,17 +1,22 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { Component,} from '@angular/core';
 import { CarouselComponent } from './carousel.component';
-import { AppRoutingModule } from '../app.routes.module';
 import { Router } from '@angular/router';
 import { GlobalService } from '../service/global.service';
-import { BehaviorSubject } from 'rxjs';
-import { Product} from '../models/product';
-import {AboutComponent } from '../about/about.component';
-import {HomeComponent } from '../home/home.component';
-import {RegisterComponent } from '../register/register.component';
-import {LoginComponent } from '../login/login.component';
+import { HttpClient } from '@angular/common/http';
+import {HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+let MockProductService: Partial<GlobalService>;
+let httpcl:Partial<HttpClient>;
+let ROOT_URl='http://localhost:3000';
+let httpMock: HttpTestingController;
+@Component({
+  selector: 'app-chart',
+  template: ''
+})
+class fakeChart{
+  
+}
+ 
 class RouterMock {
   navigateByUrl(url: string) {
     return url;
@@ -21,49 +26,20 @@ class RouterMock {
   } 
 }
 
-class MockProductService {
-  products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([
-    { 
-      "id":12,
-      "productName": "Air Conditioner",
-      "brandName": "Symphony",
-      "modelName": "Sxzs12",
-      "price": 1234
-      
-    },
-    {
-      "id": 21,
-      "productName": "Washing Machine",
-      "brandName": "Samsung",
-      "modelName": "Sm1234",
-      "price": 2345
-       }
-  ]);
-  getProducts(): BehaviorSubject<Product[]> {
-    return this.products;
-  }
 
-  addProduct(product: Product) {
-    let arrayProducts = this.products.getValue();
-    arrayProducts.push(product);
-    this.products.next(arrayProducts);
-    console.log(arrayProducts);
-  }
-}
 xdescribe('CarouselComponent', () => {
   let component: CarouselComponent;
   let fixture: ComponentFixture<CarouselComponent>;
- 
   beforeEach(async(() => {
     
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule.withRoutes([]),
-        AppRoutingModule
-      ],
-      schemas: [NO_ERRORS_SCHEMA],
-      declarations: [ CarouselComponent, AboutComponent, HomeComponent,RegisterComponent, LoginComponent ],
-      providers: [CarouselComponent,{provide: Router, useClass: RouterMock}, { provide: GlobalService, useClass: MockProductService }]
+      imports: [],
+      declarations: [ CarouselComponent, fakeChart],
+      providers: [{provide: HttpClient, useValue: httpcl},
+                  {provide: Router, useVlue: RouterMock}, 
+                  { provide: GlobalService, useValue: MockProductService }
+                  
+                ]
     })
     .compileComponents();
   }));
@@ -73,7 +49,8 @@ xdescribe('CarouselComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  httpMock = TestBed.get(HttpTestingController);
+ 
   it('should create', () => {
     expect(component).toBeTruthy();
   });

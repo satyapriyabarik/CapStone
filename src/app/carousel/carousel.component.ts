@@ -12,7 +12,7 @@ import { HttpClient } from '@angular/common/http';
 export class CarouselComponent implements OnInit {
 title="Carousel";
 products;
-constructor(private router:Router, private httpClient:HttpClient, private globalService:GlobalService){}
+constructor(private router:Router, public httpClient:HttpClient, private globalService:GlobalService){}
  ngOnInit() {
    this.getProductUrl().subscribe(res =>{
      this.products = res;
