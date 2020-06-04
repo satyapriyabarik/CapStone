@@ -18,21 +18,7 @@ class RouterMock {
 }
 class MockProductService {
   products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([
-    { 
-      "id":12,
-      "productName": "Air Conditioner",
-      "brandName": "Symphony",
-      "modelName": "Sxzs12",
-      "price": 1234
-      
-    },
-    {
-      "id": 21,
-      "productName": "Washing Machine",
-      "brandName": "Samsung",
-      "modelName": "Sm1234",
-      "price": 2345
-       }
+   
   ]);
   getProducts(): BehaviorSubject<Product[]> {
     return this.products;

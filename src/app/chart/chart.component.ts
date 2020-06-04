@@ -82,7 +82,7 @@ export class ChartComponent implements OnInit {
 
  ngOnInit() {
 // this.getProductUrl();
-this.getProductUrl().subscribe(response => {
+this.globalService.getProductUrl().subscribe(response => {
  this.productNames = response
  this.productNames.forEach(element => {
    this.lineChartLabels.push(element.productName);
@@ -90,9 +90,7 @@ this.getProductUrl().subscribe(response => {
  });
 })
  }
- getProductUrl(){
-  return this.httpClient.get(this.globalService.productApi);
- }
+ 
 getRatingUrl(){
  return this.httpClient.get(this.globalService.ratingApi)
 }

@@ -2,6 +2,7 @@
     background-color: #1976d2;
     height:108px;
     position:relative;
+    border-radius:4px;
   }
   #capstonebanner .carousel-indicators{
       top:80px;

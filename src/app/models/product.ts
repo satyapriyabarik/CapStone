@@ -1,7 +1,21 @@
 export class Product{
-    id:Number;
-    productName:String;
-    brandName: String;
-    modelName:String;
-    price:Number;
+  id: Number;
+  productName: String;
+  quantity: Number;
+  price: Number;
+  brandName: String;
+  modelName: String;
+  energyRatings: String;
+  capacity: String;
+  annualConsumption: String;
+  installationType:String;
+  color: String;
+  material: String;
+  components: String;
+  firstavailableDate: String;
+  warranty: String;
+  usability: String;
+  addedOn: String;
+  addedBy: String;
+  rate: Number;
   };

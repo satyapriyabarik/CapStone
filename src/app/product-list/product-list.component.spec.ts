@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { BehaviorSubject} from 'rxjs';
 import { Product} from '../models/product';
-import { HttpClientModule} from '@angular/common/http';
+//import { HttpClientModule} from '@angular/common/http';
 
 class RouterMock {
   navigateByUrl(url: string) {
@@ -21,22 +21,50 @@ class RouterMock {
 }
 class MockProductService {
   products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([
-    { 
-      "id":12,
+    {
+      "id": 36,
       "productName": "Air Conditioner",
+      "quantity": 5,
+      "price": 1236,
       "brandName": "Symphony",
-      "modelName": "Sxzs12",
-      "price": 1234
-      
+      "modelName": "sm23",
+      "energyRatings": "4 Star",
+      "capacity": "2 ton",
+      "annualConsumption": "3456 Watt",
+      "installationType": "Demo",
+      "color": "Blue",
+      "material": "Silver",
+      "components": "Air pollution  guard",
+      "firstavailableDate": "2020-01-02",
+      "warranty": "2 years manufacturer warranty",
+      "usability": "Best product to heat the summer with in budget.",
+      "addedOn": "2020-03-31T08:25:14.105Z",
+      "addedBy": "Gaurav Jha",
+      "rate": 5
     },
     {
-      "id": 21,
+      "id": 43,
       "productName": "Washing Machine",
+      "quantity": 12,
+      "price": 123,
       "brandName": "Samsung",
       "modelName": "Sm1234",
-      "price": 2345
-       }
+      "energyRatings": "5 star",
+      "capacity": "234 ltr",
+      "annualConsumption": "2345 watt",
+      "installationType": "free",
+      "color": "Silver",
+      "material": "Steel",
+      "components": "stand and cover",
+      "firstavailableDate": "2020-04-09",
+      "warranty": "2 years manufacturer warranty",
+      "usability": "Washing is great experience make it easy and quick through this",
+      "addedOn": "2020-04-01T14:03:34.900Z",
+      "addedBy": "Samik Gupta",
+      "rate": 9
+    }
   ]);
+
   getProducts(): BehaviorSubject<Product[]> {
     return this.products;
   }
@@ -47,10 +75,10 @@ class MockProductService {
     this.products.next(arrayProducts);
   }
 }
-xdescribe('ProductListComponent', () => {
+fdescribe('ProductListComponent', () => {
   let component: ProductListComponent;
   let fixture: ComponentFixture<ProductListComponent>;
-  
+  let productService: GlobalService;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -62,6 +90,8 @@ xdescribe('ProductListComponent', () => {
       providers: [ ProductListComponent, {provide: Router, useClass: RouterMock},{ provide: GlobalService, useClass: MockProductService }]
     })
     .compileComponents();
+    component = TestBed.get(ProductListComponent);
+    productService = TestBed.get(GlobalService);
   }));
 
   beforeEach(() => {
@@ -70,7 +100,7 @@ xdescribe('ProductListComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create a component named ProductListComponent', () => {
     expect(component).toBeTruthy();
   });
   it(`should have as title 'Products Overview'`, () => {
@@ -80,18 +110,26 @@ xdescribe('ProductListComponent', () => {
   });
   it(`should render a link button as  Add New Product`, () => {
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('a').textContent).toEqual('Add New Product');
+    expect(compiled.querySelectorAll('a')[0].textContent).toEqual('Add New Product');
   });
   it(`should render a button as  Edit`, () => {
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('button').textContent).toEqual('Edit');
+    expect(compiled.querySelectorAll('button span')[0].textContent).toEqual('Edit');
   });
   it(`should render a button as  Delete`, () => {
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('button').textContent).toEqual('Delete');
+    expect(compiled.querySelectorAll('button span')[1].textContent).toEqual('Delete');
   });
   it(`should render a link button as  View Details`, () => {
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('a').textContent).toEqual('View Details');
+    expect(compiled.querySelectorAll('a')[1].textContent).toEqual('View Details');
+  });
+  // it('should not have products list after construction', () => {
+  //   expect(component.allProductDetails).toBeTruthy();
+  // });
+
+  it('should have products list after Angular calls ngOnInit', () => {
+    component.ngOnInit();
+    expect(component.allProductDetails.length).toEqual(2);
   });
 });

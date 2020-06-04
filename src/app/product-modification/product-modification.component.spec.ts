@@ -2,7 +2,6 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
 import { ProductModificationComponent } from './product-modification.component';
-import { HttpClientModule ,HttpClient } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GlobalService } from '../service/global.service';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -20,23 +19,30 @@ class RouterMock {
 
 class MockProductService {
   products: BehaviorSubject<Product[]> = new BehaviorSubject<Product[]>([
-    { 
-      "id":12,
-      "productName": "Air Conditioner",
-      "brandName": "Symphony",
-      "modelName": "Sxzs12",
-      "price": 1234
-      
-    },
     {
-      "id": 21,
-      "productName": "Washing Machine",
-      "brandName": "Samsung",
-      "modelName": "Sm1234",
-      "price": 2345
-       }
+      "id": 36,
+      "productName": "Air Conditioner",
+      "quantity": 5,
+      "price": 1236,
+      "brandName": "Symphony",
+      "modelName": "sm23",
+      "energyRatings": "4 Star",
+      "capacity": "2 ton",
+      "annualConsumption": "3456 Watt",
+      "installationType": "Demo",
+      "color": "Blue",
+      "material": "Silver",
+      "components": "Air pollution  guard",
+      "firstavailableDate": "2020-01-02",
+      "warranty": "2 years manufacturer warranty",
+      "usability": "Best product to heat the summer with in budget.",
+      "addedOn": "2020-03-31T08:25:14.105Z",
+      "addedBy": "Gaurav Jha",
+      "rate": 5
+    }
   ]);
   getProducts(): BehaviorSubject<Product[]> {
+    alert(this.products)
     return this.products;
   }
 
@@ -46,18 +52,47 @@ class MockProductService {
     this.products.next(arrayProducts);
   }
 }
-xdescribe('ProductModificationComponent', () => {
+fdescribe('ProductModificationComponent', () => {
   let component: ProductModificationComponent;
   let fixture: ComponentFixture<ProductModificationComponent>;
-  
+  let productService: GlobalService;
+ 
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([])],
       schemas: [NO_ERRORS_SCHEMA],
       declarations: [ ProductModificationComponent ],
-      providers:[HttpClient, ProductModificationComponent, {provide: Router, useClass: RouterMock},{ provide: GlobalService, useClass: MockProductService }]
+      providers:[ ProductModificationComponent, {provide: Router, useClass: RouterMock},{ provide: GlobalService, useClass: MockProductService }]
     })
     .compileComponents();
+    component = TestBed.get(ProductModificationComponent);
+    productService = TestBed.get(GlobalService);
+    component.ngOnInit();
+  productService.productDetails = TestBed.inject(
+    {
+      "id": 36,
+      "productName": "Air Conditioner",
+      "quantity": 5,
+      "price": 1236,
+      "brandName": "Symphony",
+      "modelName": "sm23",
+      "energyRatings": "4 Star",
+      "capacity": "2 ton",
+      "annualConsumption": "3456 Watt",
+      "installationType": "Demo",
+      "color": "Blue",
+      "material": "Silver",
+      "components": "Air pollution  guard",
+      "firstavailableDate": "2020-01-02",
+      "warranty": "2 years manufacturer warranty",
+      "usability": "Best product to heat the summer with in budget.",
+      "addedOn": "2020-03-31T08:25:14.105Z",
+      "addedBy": "Gaurav Jha",
+      "rate": 5
+    } 
+  )
+   // productService.productDetails = this.products;
   }));
 
   beforeEach(() => {
@@ -66,7 +101,7 @@ xdescribe('ProductModificationComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create a component named ProductModificationComponent', () => {
     expect(component).toBeTruthy();
   });
   it(`should have as title 'Modify Product'`, () => {

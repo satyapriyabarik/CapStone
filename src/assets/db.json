@@ -40,13 +40,13 @@
       "usability": "Washing is great experience make it easy and quick through this",
       "addedOn": "2020-04-01T14:03:34.900Z",
       "addedBy": "Samik Gupta",
-      "rate": "6"
+      "rate": "9"
     },
     {
       "id": 7,
       "productName": "Led Bulb",
       "quantity": "20",
-      "price": "12",
+      "price": "15",
       "brandName": "Philips",
       "modelName": "Ph1234",
       "energyRatings": "5 Star",
@@ -59,7 +59,7 @@
       "firstavailableDate": "2020-04-02",
       "warranty": "2 years ",
       "usability": "Lighting your home decor with most efficient way of led bulbs by Philips",
-      "addedOn": "2020-04-21T06:14:33.475Z",
+      "addedOn": "2020-06-03T10:39:06.765Z",
       "addedBy": "Satyapriya Barik",
       "rate": "9"
     }

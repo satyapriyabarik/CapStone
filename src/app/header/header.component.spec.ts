@@ -36,7 +36,7 @@ fdescribe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create a component named HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
   it(`should have as title 'Capstone Project'`, () => {

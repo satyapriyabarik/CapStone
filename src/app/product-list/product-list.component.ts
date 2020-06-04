@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../service/global.service';
 import { Router } from '@angular/router';
 @Component({
@@ -12,23 +11,18 @@ title="Products Overview";
 
 constructor(
   public userDat: GlobalService,
-  private httpClient: HttpClient,
   private router: Router
 ) { }
 allProductDetails;
 searchProduct;
 flag;
 ngOnInit() {
-  this.getProductUrls();
-  this.getProductUrls().subscribe(response => {
+  this.userDat.getProducts().subscribe(response => {
     this.allProductDetails = response;
     this.allProductDetails.reverse();
     this.flag = 0;
   })
 
-}
-getProductUrls() {
-  return this.httpClient.get(this.userDat.productApi);
 }
 
 goToAddProducct(){
@@ -49,11 +43,13 @@ goToProductDetails(data){
 deleteUser(post) {
   let userconfirm = confirm('Are you sure to delete  '+ post.productName + ' from products list?');
   if (userconfirm == true) {
-    this.httpClient.delete(this.userDat.productApi + '/' + post.id)
+  this.userDat.productId = post.id;  
+  this.userDat.deleteProductStock()
       .subscribe(response => {
         let index = this.allProductDetails.indexOf(post);
         this.allProductDetails.splice(index, 1);
-        alert('Details of this product: '+ post.productName + ' permanently deleted')
+        alert('Details of this product: '+ post.productName + ' permanently deleted');
+        this.userDat.productId = null;
       });
   } else {
    return false;

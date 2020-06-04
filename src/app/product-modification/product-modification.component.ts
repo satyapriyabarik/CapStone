@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from "@angular/forms";
 import { CustomValidators } from '../validators/custom.validators';
-import { HttpClient } from '@angular/common/http';
 import { GlobalService } from '../service/global.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -17,7 +16,7 @@ export class ProductModificationComponent implements OnInit {
   success;
   timer;
   payload;
-  constructor(private fb: FormBuilder, private http: HttpClient, public productData: GlobalService, private router: Router) {
+  constructor(private fb: FormBuilder, public productData: GlobalService, private router: Router) {
 
   }
 
@@ -82,11 +81,13 @@ export class ProductModificationComponent implements OnInit {
        "addedBy": this.productData.currentUser,
        "rate":this.productData.productDetails.rate
     }
-    this.http.put(this.productData.productApi+"/"+this.productData.productDetails.id,this.payload)
+    this.productData.updatedPayload = this.payload;
+    this.productData.updateProductStock()
       .subscribe(response => {
        
       });
-      alert('Product data successfully updated ')
+      alert('Product data successfully updated ');
+   this.productData.updatedPayload={};
    this.router.navigate(["/home"]);
   }
   cancelBtnClick() {

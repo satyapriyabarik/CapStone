@@ -18,7 +18,7 @@ fdescribe('AboutComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component named AboutComponent', () => {
     expect(component).toBeTruthy();
   });
   it(`should have as title 'Product Management'`, () => {

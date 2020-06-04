@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Product } from '../models/product';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { map, catchError, tap} from 'rxjs/operators';
+
 @Injectable()
 export class GlobalService {
   users={};
   currentUser ='Guest';
   profilesDetails={};
+  updatedPayload?={};
   productDetails={
     id:Number,
     productName:String,
@@ -31,6 +34,7 @@ export class GlobalService {
   isEditTrue :boolean = false;
   isProductFlag :boolean = false;
   createdBy:String;
+  productId?=null;
   constructor(private http: HttpClient) {
     
    }
@@ -39,10 +43,13 @@ export class GlobalService {
       'Content-Type':  'application/json'
     })
 };
-  productApi='http://localhost:3000/products';
+  productApi='http://my-json-server.typicode.com/satyapriyabarik/productData/products';
+  //'http://localhost:3000/products';
   //userApi ='https://jsonplaceholder.typicode.com/users';
-  userApi ='http://localhost:3000/users';
-  ratingApi='http://localhost:3000/toprated'
+  userApi = 'http://my-json-server.typicode.com/satyapriyabarik/productData/users'
+  //'http://localhost:3000/users';
+  ratingApi='http://my-json-server.typicode.com/satyapriyabarik/productData/toprated';
+  //'http://localhost:3000/toprated'
  /* getDateFormat(date,format){
     let formated_date = this.datePipe.transform(date,format);
     return formated_date;
@@ -54,4 +61,15 @@ export class GlobalService {
   addProduct(product: Product) {
     return this.http.post(this.productApi, product, this.httpOptions);
   }
+  deleteProductStock(){
+return this.http.delete(this.productApi + '/' + this.productId)
+  }
+  updateProductStock(){
+  return  this.http.put(this.productApi+"/"+this.productDetails.id,this.updatedPayload)
+
+  }
+  getProductUrl(){
+    return this.http.get(this.productApi);
+   }
+  
 }
